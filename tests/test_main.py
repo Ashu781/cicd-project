@@ -8,5 +8,5 @@ def test_home():
 
     assert response.status_code == 200
     assert response.json() == {
-        "message": "CI/CD Project Running"
+        "message": "version 2 deployed automatically"
     }
