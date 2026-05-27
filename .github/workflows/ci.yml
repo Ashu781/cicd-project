@@ -57,15 +57,15 @@ jobs:
   
   deploy:
 
-  needs: docker
+    needs: docker
 
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
+    steps:
 
-    - name: Trigger Render Deployment
-      run: |
-        curl "$RENDER_DEPLOY_HOOK"
+      - name: Trigger Render Deployment
+        run: |
+          curl "$RENDER_DEPLOY_HOOK"
 
-      env:
-        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
