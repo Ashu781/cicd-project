@@ -54,3 +54,18 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/cicd-demo:latest
+  
+  deploy:
+
+  needs: docker
+
+  runs-on: ubuntu-latest
+
+  steps:
+
+    - name: Trigger Render Deployment
+      run: |
+        curl "$RENDER_DEPLOY_HOOK"
+
+      env:
+        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
